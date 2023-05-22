@@ -1,0 +1,137 @@
+Cenários de Testes
+
+Testes de criação de conta
+
+Cenário: Acessando formulário de criação de novo usuário 
+Dado que um usuário acesse o sistema 
+Quando clique no botão CRIAR UMA CONTA
+Então o sistema deve exibir um formulário de preenchimento dos dados do usuário
+
+Cenário: Cadastro manual de novo usuário
+Dado que um usuário esteja na tela de criação de novo usuário
+E preencha todos os campos obrigatórios de forma válida
+Quando clicar em CRIAR CONTA GRÁTIS
+Então o sistema deve exibir uma mensagem de confirmação de cadastro feito
+
+Cenário: Cadastro de novo usuário com o google 
+Dado que um usuário esteja na tela de criação de novo usuário
+Quando clicar no botão GOOGLE
+Então o sistema deve abrir uma nova tela solicitando os dados da conta de Email 
+
+Cenário: Validação de campos obrigatórios do formulário de criação de novo usuário 
+Dado que o usuário esteja na tela de criação de novo usuário
+Quando não preencher um campo obrigatório 
+Então o sistema deve destacar esse campo em vermelho informando sua obrigatoriedade
+E o botão CRIAR CONTA GRÁTIS fica desabilitado
+
+Cenário: Validação de dados informados nos campos do formulário de criação de novo usuário 
+Dado que um usuário esteja na tela de criação de novo usuário
+Quando preencher um campo com um dado incoerente, como "Letras no campo de CPF", "não ter um @ no campo de Email"
+Então o sistema deve exibir um alerta em cada campo informando a incoerência com os dados informados
+
+Cenário: Cancelamento de cadastro de novo usuário 
+Dado que um usuário esteja na tela de criação de novo usuário
+Quando clicar em "Voltar para Serasa"
+Então o sistema deve voltar para sua tela inicial
+
+Cenário: Validação do formato da senha informado no formulário de criação de novo usuário 
+Dado que um usuário esteja na tela de criação de novo usuário
+Quando preencher o campo Senha com um dado que não respeite a regra do campo
+Então o sistema deve destacar no campo que seu preenchimento está indevido
+
+Cenário: Validação da exibição dos dados da senha no formulário de criação de novo usuário
+Dado que um usuário esteja na tela de criação de um novo usuário
+Quando preencher o campo Senha 
+E clicar em "Visualização de Senha" simbolizado por um ícone ao lado da senha
+Então a senha digitada deve ser exibida na íntegra
+
+Cenário: Validação da marcação do checkbox da aceitação dos termos 
+Dado que um usuário esteja na tela de criação de novo usuário
+Quando selecionar o checkbox de aceitação dos termos
+Então o sistema deve manter o checkbox selecionado 
+E se não houver mais dados pendentes deve habilitar o botão CRIAR CONTA GRÁTIS
+E se houver dados ainda pendentes não deve habilitar o botão CRIAR CONTA GRÁTIS
+
+Cenário: Validação da exibição dos termos 
+Dado que um usuário esteja na tela de criação de novo usuário 
+Quando clicar em "Visualizar termos"
+Então o sistema deve exibir os termos 
+E exibir um botão de retorno para a tela inicial da Serasa
+E exibir um botão de retorno ao formulário de criação de novo usuário
+
+Cenário: Validação do recarregamento do formulário de criação de novo usuário após acessar os termos
+Dado que um usuário esteja na tela de visualização dos termos
+Quando clicar em Retornar
+Então o sistema deve retornar para a tela de criação de novo usuário 
+E os campos anteriormente preenchidos devem ser trazidos preenchidos 
+E se houverem validações de campos preenchidos de forma incorreta devem ser mantidas 
+E se houverem validações de campos obrigatórios não preenchidos devem ser mantidas
+
+
+Cenário: Tentativa de cadastro de um usuário ja cadastrado.
+Dado que um usuário esteja na tela de cadastro de novo usuário 
+Quando preencher o campo de CPF ou Email com um dado ja existente na base de dados 
+Então ao clicar em CRIAR CONTA GRATIS o sistema deve exibir uma mensagem de alerta informando que o dado fornecido ja foi identificado em nosso sistema
+E deve solicitar que o usuário acesse a tela de "login"
+E clicar em "esqueci a senha" para recuperar a conta
+
+
+
+Testes da tela Inicial 
+
+
+Cenário: Acessar a página "entenda seu score"
+Dado que um usuário esteja na página de login do Serasa
+Quando fizer login com suas credenciais validas 
+E acessar a tela "entenda seu score"
+Então deve ser exibida a tela de saúde financeira
+E dentre outras informações é possível ver pontuação do score 
+
+Cenário: Acessar o histórico da pontuação do score
+Dado que um usuário esteja na tela de saúde financeira 
+Quando clicar em ver histórico 
+Então deve ser exibido uma nova tela de histórico do seu score 
+E deve ser exibido o histórico de alteração de pontuação 
+
+Cenário: Acessar bloqueio de score para consultas 
+Dado que um usuário premium esteja na página de saúde financeira
+Quando clicar no botão de bloqueio ou desbloqueio do Serasa Score para consultas
+Então deve ser exibido a tela de bloqueio ou desbloqueio do Serasa Score para consultas
+
+Cenário: Acessar conecte suas contas bancárias 
+Dado que um usuário esteja na tela inicial 
+E clicar no botão conectar meu banco 
+E escolher uma instituição da lista de Instituições disponíveis para cadastro 
+E preencher todos os dados do formulário exibido
+Quando clicar em conectar 
+Então o sistema deve exibir uma mensagem de confirmação da conexão 
+
+ Cenário: Acessar o que compõe seu score 
+Dado que um usuário esteja na tela de saúde financeira 
+Quando clicar em "ver composição" para ver o que compõe o seu score
+Então deve ser exibido um gráfico com representação das categorias que compõe o Serasa score 
+
+Cenário: Verificar solicitação de cartão de crédito Picpay
+Dado que um usuário esteja na tela inicial
+E clicar no botão Ofertas de cartão
+E escolher a instituição disponível 
+Quando clicar em pedir cartão 
+E clicar no botão Finalizar com o parceiro 
+Então o usuário é redirecionado para o site do parceiro
+
+Cenário: Verificar solicitação de cartão de crédito Neon 
+Dado que um usuário esteja na tela inicial  
+E clicar no botão Ofertas de cartão
+E escolher a instituição disponível
+Quando clicar em pedir cartão
+E preencher o formulário com informações validas 
+E clicar no botão "Enviar para análise"
+Então o usuário é redirecionado para o site do parceiro
+
+Cenário: Validação de contratação do plano premium 
+Dado que um usuário esteja na tela inicial 
+E clique no botão "meu cpf"
+Quando selecionar o botão Quero aproveitar para assinar o plano premium 
+Então o sistema deverá mostrar as opções de planos para o usuário escolher 
+
+
